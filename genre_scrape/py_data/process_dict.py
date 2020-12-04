@@ -146,7 +146,7 @@ genres =  {     'alternative': [     'art punk',
                                    'urban cowboy',
                                    'western swing',
                                    'zydeco'],
-                  'dance': [     club '
+                  'dance': [     'club '
                                                                                                                                         'club '
                                                                                                                                         'dance',
                                                                                                                                         'breakcore',
@@ -781,13 +781,11 @@ genres =  {     'alternative': [     'art punk',
                                  'isicathamiya',
                                  'jit',
                                  'jùjú',
-                                 'kapuka',        while more_songs:
-            response = requests.get(self.url, headers=self.header()).json()
-            matcher.send(response)
-            self.offset += 50
-            self.url = f"https://api.spotify.com/v1/me/tracks?offset={self.offset}&limit={self.query}"
-            more_songs = response["next"]
-        matcher.close()
+                                 'kapuka',
+                                 'kizomba',
+                                 'kuduro',
+                                 'kwaito',
+                                 'kwela',
                                  'makossa',
                                  'maloya',
                                  'marrabenta',
