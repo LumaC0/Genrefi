@@ -1,3 +1,4 @@
 .vscode/*
 Pipfile.lock
 genre_scrape/.vscode/*
+.env
