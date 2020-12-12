@@ -2,3 +2,4 @@
 Pipfile.lock
 genre_scrape/.vscode/*
 .env
+genrefi/geckodriver.log
