@@ -1,4 +1,4 @@
-{'2 tone': 'reggae',
+genres = {'2 tone': 'reggae',
  '2-step': 'electronic',
  '2-tone': 'reggae',
  '21st century classical': 'classical',

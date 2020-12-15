@@ -6,13 +6,16 @@ name = "pypi"
 [packages]
 django = "==3.1.3"
 spotipy = "*"
-python-dotenv = "*"
 requests = "*"
 selenium = "*"
+authlib = "*"
+django-redis = "*"
 
 [dev-packages]
 bandit = "*"
 beautifulsoup4 = "*"
+django-dotenv = "*"
+django-debug-toolbar = "*"
 
 [requires]
 python_version = "3.9"
