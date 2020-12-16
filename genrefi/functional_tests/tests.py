@@ -25,4 +25,4 @@ class GenrelUserTest(LiveServerTestCase):
         # she'll log into her spotify account using OAuth
         # and the spotify client
         page_text = self.browser.find_element_by_tag_name('body').text
-        self.assertIn('Successfully Logged In', text)
+        self.assertIn('Successfully Logged In', page_text)
