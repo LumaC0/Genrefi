@@ -21,5 +21,5 @@ from figenre import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name='login'),
-    path('home/', views.index, name='home')
+    path('home/', views.home, name='home')
 ]
