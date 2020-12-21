@@ -96,7 +96,8 @@ CACHES = {
 
 }
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_UNIX_DOMAIN_SOCKET_PATH = '/var/run/redis/redis.sock'
 
 
 # Password validation
@@ -136,13 +137,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-# OAuth configuration
-AUTHLIB_OAUTH_CLIENTS ={
-    'spotify': {
-        'client_id': os.getenv('SPOTIPY_CLIENT_ID'),
-        'client_secret': os.getenv('SPOTIPY_CLIENT_SECRET'),
-    }
-}
-

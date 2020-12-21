@@ -21,7 +21,7 @@ class GenrelUserTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         self.assertIn('Genrefi', self.browser.title)
         # the option to login will be visible to her
-        self.browser.find_element_by_id('login').click()
+        self.browser.find_element_by_id('Spotify').click()
         # she'll log into her spotify account using OAuth
         # and the spotify client
         page_text = self.browser.find_element_by_tag_name('body').text
