@@ -11,33 +11,32 @@ import dotenv
 
 dotenv.read_dotenv('/home/spencer/prod/genrefi/genrefi/.env')
 
+caches_folder = settings.SESSION_FILE_PATH
+if not os.path.exists(caches_folder):
+    os.makedirs(caches_folder)
 
-def home(request):
-    return render(request, 'index.html')
+def home(request, **kwargs):
+    val = request.session['token']
+    return render(request, 'index.html', {'token_' : val})
 
 def login(request):
     return HttpResponse(render(request,'login.html'))
 
 def auth(request):
-    uid = str(uuid.uuid4())
-    if not cache.get(uid):
-        cache.set(uid, str) 
-
+    scope = 'user-library-read'
     auth_manager = spotipy.oauth2.SpotifyOAuth(
-        client_id = os.environ['SPOTIPY_CLIENT_ID'],
-        client_secret = os.environ['SPOTIPY_CLIENT_SECRET'],
-        redirect_uri = os.environ['SPOTIPY_REDIRECT_URI'],
-        scope='user-library-read',
-        show_dialog=True,)
+        scope=scope,
+        cache_path=caches_folder,
+        show_dialog=True,
+    )
 
-    if (auth_token := auth_manager.get_cached_token()):
-        cache.set(uid, auth_token)
-        SP = spotipy.Spotify(auth_token['access_token'])
-    else: 
-        auth_url = auth_manager.get_authorize_url()
-        return HttpResponseRedirect(auth_url)
-    
-    return render('home', 'index.html', {'token_': auth_token['access_token']})
+    auth_code = auth_manager.get_authorization_code()
+    #if not auth_code:
+    #    auth_url = auth_manager.get_authorize_url()
+    #    return HttpResponseRedirect(auth_url)
+    sp = spotipy.Spotify(auth_code)
+    request.session['token'] = sp._auth_headers()['Authorization']
+    return redirect('home')#, {'auth': sp})
 
 '''
 sp_oauth = oauth2.SpotifyOAuth(

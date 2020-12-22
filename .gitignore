@@ -4,3 +4,4 @@ genre_scrape/.vscode/*
 .env
 genrefi/geckodriver.log
 dump.rdb
+tmp/
