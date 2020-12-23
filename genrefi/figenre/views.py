@@ -1,42 +1,47 @@
 import os
 
+
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, HttpRequest
+from django.core.cache import caches, cache
+from django.http import Http404
+from django.conf import settings
 import spotipy
-import spotipy.util as util
-from spotipy import oauth2
 import dotenv
 
 dotenv.read_dotenv('/home/spencer/prod/genrefi/genrefi/.env')
-USERNAME = ''
-SP = ''
-
-# Create your views here.
-def login(request):
-    return HttpResponse(render(request,'login.html'))
-    
+CACHES_FOLDER = settings.SESSION_FILE_PATH
 
 def home(request):
-    sp_oauth = oauth2.SpotifyOAuth(
-        client_id = os.environ['SPOTIPY_CLIENT_ID'],
-        client_secret = os.environ['SPOTIPY_CLIENT_SECRET'],
-        redirect_uri = os.environ['SPOTIPY_REDIRECT_URI'],
-        scope= 'user-library-read',
-        cache_path='.cache-' + USERNAME,
-        show_dialog=True,)
+    scope = 'user-library-read'
+    auth_manager = spotipy.oauth2.SpotifyOAuth(
+        scope=scope,
+        cache_path=CACHES_FOLDER,
+        show_dialog=True,
+    )
+    print('here', request.session.keys())
+    if not auth_manager.get_cached_token():
+        authUrl = auth_manager.get_authorize_url()
+        return render(request, 'login.html', {'auth_url': authUrl})
     
-    token_info = sp_oauth.get_cached_token()
-    if not token_info:
-        auth_url = sp_oauth.get_authorize_url()
-        return HttpResponseRedirect(auth_url)
+    spotify = spotipy.Spotify(auth_manager=auth_manager)
+    #request.session['token'] = spotify._auth_headers['Authorization']
+    return render(request, 'index.html', {'token_' : request.session['token']})
+
+'''
+def login(request):
+    return HttpResponse(render(request,'login.html'))
+
+def auth(request):
+    auth_code = auth_manager.get_authorization_code()
+    if auth_code:
+        auth_manager.get_access_token(auth_code)
+        return redirect('home')
     else:
-        SP = spotipy.Spotify(token_info['access_token'])
-    return render(request, 'index.html', {'auth': SP})
-
-
-
-
-
-        
-
+        auth_url = auth_manager.get_authorize_url()
+        return HttpResponseRedirect(auth_url)
+    sp = spotipy.Spotify(auth_code)
+    request.session['token'] = sp._auth_headers()['Authorization']
+    return redirect('home')#, {'auth': sp})
+'''
     

@@ -8,8 +8,9 @@ django = "==3.1.3"
 spotipy = "*"
 requests = "*"
 selenium = "*"
-authlib = "*"
 django-redis = "*"
+redis = "*"
+django-redis-sessions = "*"
 
 [dev-packages]
 bandit = "*"

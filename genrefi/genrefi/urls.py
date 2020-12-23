@@ -20,6 +20,7 @@ from figenre import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.login, name='login'),
-    path('home/', views.home, name='home')
+    path('', views.home, name='home'),
+    #path('auth', views.auth, name='auth'),
+    #path('home/', views.home, name='home'),
 ]

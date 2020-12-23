@@ -84,6 +84,7 @@ DATABASES = {
 }
 
 # cache
+'''
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -95,8 +96,11 @@ CACHES = {
     }
 
 }
-
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+'''
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+SESSION_FILE_PATH = '/home/spencer/prod/genrefi/tmp'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+#SESSION_REDIS_UNIX_DOMAIN_SOCKET_PATH = '/var/run/redis/redis.sock'
 
 
 # Password validation
@@ -136,13 +140,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-# OAuth configuration
-AUTHLIB_OAUTH_CLIENTS ={
-    'spotify': {
-        'client_id': os.getenv('SPOTIPY_CLIENT_ID'),
-        'client_secret': os.getenv('SPOTIPY_CLIENT_SECRET'),
-    }
-}
-
