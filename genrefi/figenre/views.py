@@ -52,5 +52,5 @@ class Discover(View):
         if not request.session.get('library_data'):
             request.session['library_data'] = genrefi_logic.genre_fi(request.session.get('auth_token'))
         data = request.session.get('library_data')
-        return render(request, 'index.html', {'sorted': data[0]})
+        return render(request, 'index.html', {'sorted': data})
 
