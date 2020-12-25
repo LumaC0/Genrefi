@@ -8,6 +8,8 @@ from django.views import View
 import spotipy
 import dotenv
 
+from figenre.logic import genrefi_logic
+
 dotenv.read_dotenv('/home/spencer/prod/genrefi/genrefi/.env')
 CACHES_FOLDER = settings.SESSION_FILE_PATH
 
@@ -18,7 +20,7 @@ class HomeView(View):
     def get(self, request):
         if not request.session.get('access_token'):
             return self.get_client(request)
-        spotify = spotipy.Spotify(auth_manager=self.auth_manager)
+        #spotify = spotipy.Spotify(auth_manager=self.auth_manager)
         #request.session['token'] = spotify._auth_headers()['Authorization']
         return redirect('/discover')
 
@@ -47,29 +49,8 @@ class Discover(View):
         return render(request, 'index.html')
 
     def post(self, request):
-        token = {'auth': request.session.get('auth_token', 'cocks')}
-        return render(request, 'index.html', {'sorted': token})
+        if not request.session.get('library_data'):
+            request.session['library_data'] = genrefi_logic.genre_fi(request.session.get('auth_token'))
+        data = request.session.get('library_data')
+        return render(request, 'index.html', {'sorted': data[0]})
 
-
-'''
-def home(request):
-    #if not request.session._session_key:
-    #    request.session.create()
-
-    scope = 'user-library-read'
-    auth_manager = spotipy.oauth2.SpotifyOAuth(
-            scope=scope,
-            show_dialog=True,
-    )
-    request.session['code'] = auth_manager.get_authorization_code()
-    if (t := request.session.get('code')):
-        auth_manager.get_access_token(t)
-    print('here', request.session._session_key)
-    if not auth_manager.get_cached_token():
-        authUrl = auth_manager.get_authorize_url()
-        return render(request, 'login.html', {'auth_url': authUrl})
-    
-    spotify = spotipy.Spotify(auth_manager=auth_manager)
-    request.session['token'] = spotify._auth_headers()['Authorization']
-    return render(request, 'index.html', {'token_' : [request.session, request.session['code']]})
-'''

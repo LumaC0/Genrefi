@@ -12,8 +12,8 @@
     {% csrf_token %}
 </form>
     <table id="genres">
-        {% for key, value in sorted.items %}
-        <tr><td>{{key}} : {{value}}</td></tr>
+        {% for value in sorted %}
+        <tr><td>{{forloop.counter}} : {{value}}</td></tr>
         {% endfor %}
     </table>
 </body>
