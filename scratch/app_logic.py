@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import json
 import pprint
@@ -11,12 +12,12 @@ import concurrent.futures
 import dotenv
 import spotipy
 import requests
-from tqdm import tqdm
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 
+sys.path.append('/home/spencer/prod/genrefi/scratch/genre_scrape/py_data/')
 import sub_keys
 
-dotenv.load_dotenv()
+dotenv.read_dotenv('/home/spencer/prod/genrefi/genrefi/.env')
 PP = pprint.PrettyPrinter()
 
 def coroutine(func):

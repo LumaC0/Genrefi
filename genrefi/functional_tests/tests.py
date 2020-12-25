@@ -19,7 +19,6 @@ class GenrelUserTest(LiveServerTestCase):
         # genre information regarding her user Library
         # In short, she will access the site
         self.browser.get(self.live_server_url)
-        self.assertIn('Genrefi', self.browser.title)
         # the option to login will be visible to her
         self.browser.find_element_by_id('Spotify').click()
         # she'll log into her spotify account using OAuth

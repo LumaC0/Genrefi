@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from figenre import views
+from figenre.views import HomeView, Discover
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', HomeView.as_view(), name='home'),
+    path('discover', Discover.as_view(), name='discover')
     #path('auth', views.auth, name='auth'),
     #path('home/', views.home, name='home'),
 ]

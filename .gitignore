@@ -5,3 +5,4 @@ genre_scrape/.vscode/*
 genrefi/geckodriver.log
 dump.rdb
 tmp/
+tmp
