@@ -33,13 +33,12 @@ class GenrelUserTest(LiveServerTestCase):
         # she'll log into her spotify account using OAuth
         # and the spotify client
         self.assertNotEqual(login_url, self.browser.current_url)
-        self.browser.find_element_by_id('login-username').send_keys('1243046973')
-        self.browser.find_element_by_id('login-password').send_keys('t659AA1qa!QA')
-        self.browser.find_element_by_id('login-button').click()
-        time.sleep(1)
+        #self.browser.find_element_by_id('login-username').send_keys('1243046973')
+        #self.browser.find_element_by_id('login-password').send_keys('t659AA1qa!QA')
+        #self.browser.find_element_by_id('login-button').click()
         # accept scope
-        self.browser.find_element_by_id('auth-accept').click()
-        time.sleep(1)
+        #self.browser.find_element_by_id('auth-accept').click()
+        time.sleep(10)
         # Chi Chi clicks on 'discover' to access her library statistics
         
         self.browser.find_element_by_id("press-for-magic").click()

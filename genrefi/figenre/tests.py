@@ -9,10 +9,7 @@ class LoginPageTest(TestCase):
     def test_login_page_response(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, "login.html")
-
-    def test_login_redirect(self):
-        response = self.client.get('/auth')
-        self.assertEqual(response.status_code, 200)
+        
 
 class DatabaseTests(TestCase):
     def test_initial_db_data_migration(self):
