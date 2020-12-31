@@ -6,3 +6,4 @@ genrefi/geckodriver.log
 dump.rdb
 tmp/
 tmp
+genrefi/figenre/static/bootstrap/**

@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genrefi</title>
-</head>
-<body>
-    <button id="login"><a href={{ auth_url }}>Spotify</a></button>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block write-about-stuff %}
+<div class="text-info">
+    <h3 class="starting-text"><p>I've always been curious about my listening habits.</p> 
+        <p>Spotify does an exceptional job at cataloging mostly everything I would want to know.</p>
+        One stastistic </h3>
+</div>
+{% endblock %}
+{% block button-and-form %}
+<button class="main-butt" id="login"><a class="auth-link" href={{ auth_url }}><span data-title="Spotify">Login</span></a></button>
+{% endblock %}
+

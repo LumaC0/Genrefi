@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genrefi</title>
-</head>
-<body>
-    <h1 id="app-name">Genrefi</h1>
-    <form method="POST" action="/discover">
-    <button id="press-for-magic">Discover</button>
-    {% csrf_token %}
-</form>
-    <table id="genres">
-        {% for key, value in sorted.items %}
-        <tr><td>{{key}} : {{value}}</td></tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block button-and-form %}
+<form method="POST" action="/discover">
+<button class="main-butt" id="press-for-magic"><span data-title="Your Library">Discover</span></button>
+{% endblock %}
+
+{% block table %}
+    {% for key, value in sorted.items %}
+    <tr><td>{{key}} : {{value}}</td></tr>
+    {% endfor %}
+{% endblock %}
+   
