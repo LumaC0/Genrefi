@@ -15,6 +15,7 @@ from figenre.logic import sub_keys
 
 GENRES = sub_keys.genres
 AUTHORIZATION_TOKEN = None
+REFESH_TOKEN = None
 
 # all about making requests thread-save
 # I do not thing requests are inharently thread-save. idk 
@@ -94,7 +95,10 @@ class GetSongs(BaseRequests):
             response = session.get(self.url(query=1), headers=self.header()).json()
         except requests.exceptions.HTTPError as err:
             raise err(http_error_msg, response=self)
-        self.song_total = response['total']
+        if not response.get('total'):
+            AUTHORIZATION_TOKEN = REFESH_TOKEN
+            self.make_concurrent_iterable()
+        self.song_total = response.get('total')
         return list(range(0, self.song_total, self.query))
         #return list(range(0, 250, self.query)) # testing range so I dont cause DoS attack
 
@@ -197,19 +201,17 @@ class SubgenreSort(GenreAnalysis):
     def per_centum(self):
         if not self.sorted:
             self.sort
-        songs = 0
         for i,v in self.sorted.items():
-            songs+=len(v)
-            percentage = round(len(v)/self.song_total*100,4)
-            self.mathed[i] = [percentage, f"{len(v)}/{self.song_total}"]
+            self.mathed[i] = [round(len(v)/self.song_total * 100, 2), len(v)]
         data = list(sorted(self.mathed.items(), key = lambda x: x[1][0], reverse=True))
-        return {i[0]:i[1] for i in data}
+        return {i[0]:i[1] for i in data}, self.song_total
 
 # code runner
-def genre_fi(auth_token):
+def genre_fi(auth_token, refresh_token):
     global AUTHORIZATION_TOKEN
     if not AUTHORIZATION_TOKEN:
         AUTHORIZATION_TOKEN = auth_token
+        REFESH_TOKEN = refresh_token
     sr = GetSongs()
     sr()
     gr = GetGenres(sr.artist_info)
