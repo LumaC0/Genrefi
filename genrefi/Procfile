@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-web: gunicorn genrefi.wsgi
-=======
-web: gunicorn --pythonpath genrefi genrefi.wsgi
->>>>>>> b54c9f1f67f06b142c6bc3ea3b028e13fd7fbfef
