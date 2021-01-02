@@ -1,1 +1,1 @@
-web: gunicorn genrefi.wsgi:application --log-file -
+web: gunicorn genrefi.wsgi
