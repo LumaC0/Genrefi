@@ -24,7 +24,7 @@ SECRET_KEY = '9^3!@6kxvvlp+so7gp795)g)-7te4ni)z@h-=h9e&fb=8kb96p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sleepy-citadel-51400.herokuapp.com']
 
 
 # Application definition
