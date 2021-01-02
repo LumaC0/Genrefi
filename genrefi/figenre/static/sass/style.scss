@@ -111,6 +111,7 @@ button .auth-link {
 
 // -------- login button and effect -----
 .main-butt {
+  cursor: pointer;
   font-family: map.get($fonts, "title-font");
   font-size: 20px;
   font-weight: 950;
@@ -154,9 +155,17 @@ button .auth-link {
   transform: scale(1.5);
 	transform:translate3d(0px,0px,-40px) rotateX(90deg);
 }
+
+.disclaimer {
+  font-family: map.get($fonts, "base-font");
+  color: map.get($theme-colors, 'orange');
+  font-size: smaller;
+  padding-left: 32px;
+}
 // ----- end button effect ----
 
 #log-out {
+  cursor: pointer;
   padding-bottom: 32px;
 }
 .text-info {
@@ -191,7 +200,7 @@ button .auth-link {
   color: map.get($theme-colors, 'bej');
   font-size: larger;
   font-weight: 900;
-  animation: fadeInAnimation ease-in 5s;
+  animation: fadeInAnimation ease-in 4s;
 }
 .genre-table tbody{
   display: flex;

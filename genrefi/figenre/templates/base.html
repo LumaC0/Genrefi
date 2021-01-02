@@ -14,7 +14,7 @@
         <a href="{% url 'home' %}" class="logo-link"><img src="../static/img/big-logo.png" 
                 alt="Genrefi is the name" class="big-logo"></a>
         <div class="socials">
-            <a class="image-link-cont"  href="https://twitter.com/FencerSpinkel" 
+            <a class="image-link-cont"  href="https://github.com/MushinMiscellanea/genrefi" 
                 id="github"><img class="image-link"
                 src="../static/img/GitHub-Mark-Light-120px-plus.png"
                 alt="Github link"></a> 
@@ -34,12 +34,15 @@
 
             {% block button-and-form %}
             {% endblock %}
-            
+
             {% block disclaimer %}
             {% endblock %}
+
             {% csrf_token %}
+
             {% block narrative-2 %}
             {% endblock %}
+
             {% block data-table %}
             {% endblock %}
         </table>

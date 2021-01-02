@@ -3,6 +3,8 @@
 {% block button-and-form %}
 <form method="POST" action="/discover">
 <button class="main-butt" id="log-out"><span data-title="Log out">Log out</span></button>
+{% csrf_token %}
+</form>
 {% endblock %}
 
 {% block narrative-2 %}

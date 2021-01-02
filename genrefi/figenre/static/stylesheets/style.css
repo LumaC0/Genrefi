@@ -69,6 +69,7 @@ button .auth-link {
 }
 
 .main-butt {
+  cursor: pointer;
   font-family: "Montserrat";
   font-size: 20px;
   font-weight: 950;
@@ -111,7 +112,15 @@ button .auth-link {
   transform: translate3d(0px, 0px, -40px) rotateX(90deg);
 }
 
+.disclaimer {
+  font-family: "Raleway";
+  color: #ff8630;
+  font-size: smaller;
+  padding-left: 32px;
+}
+
 #log-out {
+  cursor: pointer;
   padding-bottom: 32px;
 }
 
@@ -149,7 +158,7 @@ button .auth-link {
   color: #f4f0bb;
   font-size: larger;
   font-weight: 900;
-  animation: fadeInAnimation ease-in 5s;
+  animation: fadeInAnimation ease-in 4s;
 }
 
 .genre-table tbody {
