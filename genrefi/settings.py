@@ -15,7 +15,7 @@ import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-dotenv.read_dotenv(Path.joinpath(BASE_DIR, '.env'))
+dotenv.read_dotenv(os.path.abspath(os.path.join(BASE_DIR,'.env')))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'sleepy-citadel-51400.herokuapp.com/', 
     '0.0.0.0',
+    '127.0.0.1',
 ]
 
 
