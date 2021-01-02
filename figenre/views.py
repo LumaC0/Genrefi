@@ -6,11 +6,11 @@ from django.conf import settings
 from django.views import View
 
 import spotipy
-import dotenv
+#import dotenv
 
 from figenre.logic import genrefi_logic
 
-dotenv.read_dotenv('/home/spencer/prod/genrefi/.env')
+#dotenv.read_dotenv('../.env')
 CACHE_FILE = settings.SESSION_FILE_PATH
 
 class HomeView(View):
