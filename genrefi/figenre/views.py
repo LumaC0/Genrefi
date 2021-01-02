@@ -10,7 +10,7 @@ import dotenv
 
 from figenre.logic import genrefi_logic
 
-dotenv.read_dotenv('/home/spencer/prod/genrefi/genrefi/.env')
+dotenv.read_dotenv('/home/spencer/prod/genrefi/.env')
 CACHE_FILE = settings.SESSION_FILE_PATH
 
 class HomeView(View):
@@ -50,7 +50,7 @@ class Discover(View):
             request.session['library_data'] = genrefi_logic.genre_fi(auth_token, refresh_token
             )
         data = request.session.get('library_data')
-        if data is "timed out":
+        if data == "timed out":
             return redirect('/')
         song_num = data[1]
         genres = data[0]
@@ -58,7 +58,7 @@ class Discover(View):
         first_perc, first_num = genres[first_genre]
         proc_genres = [(genre.title(), num[0], num[1]) for genre, num in genres.items() if genre != first_genre and num[1] > 2]
         return render(request, 'index.html', 
-            {'genre1': first_genre,
+            {'genre1': first_genre.title,
             'genre1_song_num': first_num,
             'genre1_song_percent': first_perc,
             'genres': proc_genres, 
