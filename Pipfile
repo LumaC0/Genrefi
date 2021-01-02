@@ -7,16 +7,15 @@ name = "pypi"
 django = "==3.1.3"
 spotipy = "*"
 requests = "*"
-selenium = "*"
 django-redis = "*"
 redis = "*"
 django-redis-sessions = "*"
+gunicorn = "*"
+django-dotenv = "*"
 
 [dev-packages]
 bandit = "*"
-beautifulsoup4 = "*"
-django-dotenv = "*"
-django-debug-toolbar = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.9"
