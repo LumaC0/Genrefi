@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-import dotenv
+import redis
+#import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-dotenv.read_dotenv(os.path.abspath(os.path.join(BASE_DIR,'.env')))
+#dotenv.read_dotenv(os.path.abspath(os.path.join(BASE_DIR,'.env')))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -23,11 +24,11 @@ dotenv.read_dotenv(os.path.abspath(os.path.join(BASE_DIR,'.env')))
 SECRET_KEY = '9^3!@6kxvvlp+so7gp795)g)-7te4ni)z@h-=h9e&fb=8kb96p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
 
 ALLOWED_HOSTS = [
     'sleepy-citadel-51400.herokuapp.com/',
-     
     '0.0.0.0',
     '127.0.0.1',
 ]
@@ -88,11 +89,11 @@ DATABASES = {
 }
 
 # cache
-'''
+
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'LOCATION': os.environ.get('REDIS_URL'),
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient'
         },
@@ -100,8 +101,8 @@ CACHES = {
     }
 
 }
-'''
-SESSION_ENGINE = 'redis_sessions.session'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_FILE_PATH = '/home/spencer/prod/genrefi/tmp '
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #SESSION_COOKIE_AGE = 300
