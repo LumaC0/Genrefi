@@ -1,4 +1,2 @@
-web: gunicorn genrefi.wsgi:application --log-file - --log-level debug
-python manage.py collectstatic --noinput
-manage.py migrate
+web: gunicorn genrefi.wsgi --log-file - --log-level debug
 
