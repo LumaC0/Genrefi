@@ -26,7 +26,8 @@ SECRET_KEY = '9^3!@6kxvvlp+so7gp795)g)-7te4ni)z@h-=h9e&fb=8kb96p'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'sleepy-citadel-51400.herokuapp.com/', 
+    'sleepy-citadel-51400.herokuapp.com/',
+     
     '0.0.0.0',
     '127.0.0.1',
 ]
