@@ -1,2 +1,0 @@
-web: gunicorn genrefi.wsgi --log-file - --log-level debug
-
