@@ -17,6 +17,7 @@ GENRES = sub_keys.genres
 AUTHORIZATION_TOKEN = None
 REFESH_TOKEN = None
 
+
 # all about making requests thread-save
 # I do not thing requests are inharently thread-save. idk 
 thread_local = threading.local()
@@ -24,8 +25,6 @@ def get_session():
     if not hasattr(thread_local, 'session'):
         thread_local.session = requests.Session()
     return thread_local.session
-
-    
 
 class BaseRequests:
     def __init__(self):
@@ -77,7 +76,8 @@ class GetSongs(BaseRequests):
     def __init__(self):
         super().__init__()
         self.artist_info = dict()
-        self.song_total = None
+        self.song_total = 0
+        self.time_out_tries = 0
         self.song_total_iterable = self.make_concurrent_iterable()
 
     def __call__(self):
@@ -96,6 +96,9 @@ class GetSongs(BaseRequests):
         except requests.exceptions.HTTPError as err:
             raise err(http_error_msg, response=self)
         if not response.get('total'):
+            self.time_out_tries += 1
+            if self.time_out_tries == 2:
+                return 0
             AUTHORIZATION_TOKEN = REFESH_TOKEN
             self.make_concurrent_iterable()
         self.song_total = response.get('total')
@@ -209,11 +212,13 @@ class SubgenreSort(GenreAnalysis):
 # code runner
 def genre_fi(auth_token, refresh_token):
     global AUTHORIZATION_TOKEN
-    if not AUTHORIZATION_TOKEN:
-        AUTHORIZATION_TOKEN = auth_token
-        REFESH_TOKEN = refresh_token
+    AUTHORIZATION_TOKEN = auth_token
+    REFESH_TOKEN = refresh_token
     sr = GetSongs()
+    if not sr.song_total_iterable:
+        return "timed out"
     sr()
+    
     gr = GetGenres(sr.artist_info)
     gr()
     sort = SubgenreSort(gr.artist_genre_info, sr.song_total)

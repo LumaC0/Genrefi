@@ -7,40 +7,43 @@
     <link rel="stylesheet" href="../static/stylesheets/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&family=Russo+One&display=swap" rel="stylesheet">
-
-
+    <link rel="icon" type="image/ico" href="../static/img/favicon.ico">
 </head>
 <body>
+    <section class="header">
+        <a href="{% url 'home' %}" class="logo-link"><img src="../static/img/big-logo.png" 
+                alt="Genrefi is the name" class="big-logo"></a>
+        <div class="socials">
+            <a class="image-link-cont"  href="https://twitter.com/FencerSpinkel" 
+                id="github"><img class="image-link"
+                src="../static/img/GitHub-Mark-Light-120px-plus.png"
+                alt="Github link"></a> 
+            <a  class="image-link-cont" href="https://twitter.com/FencerSpinkel" 
+                id="twitter"><img class="image-link"
+                src="../static/img/Twitter_Social_Icon_Circle_White.png"
+                alt="Twitter link"></a>
+            <a  class="image-link-cont" href="https://www.linkedin.com/in/spencer-finkel" 
+                id="linkedin"><img class="image-link"
+                src="../static/img/LI-In-Bug.png"
+            alt="Linkedin link"></a> </section>
+        </div>
     <section class="main">
-        <div id="header">
-            <img src="../static/img/big-logo.png" 
-            alt="Genrefi is the name" class="big-logo">
-            {% block write-about-stuff %}
+        <div class="info">
+            {% block narrative-1 %}
             {% endblock %}
 
             {% block button-and-form %}
             {% endblock %}
+            
+            {% block disclaimer %}
+            {% endblock %}
             {% csrf_token %}
-        </div>
-        <div class="info">
-            {% block table %}
+            {% block narrative-2 %}
+            {% endblock %}
+            {% block data-table %}
             {% endblock %}
         </table>
         </div> 
     </section>
-    <section class="footer"> 
-        <a  href="https://twitter.com/FencerSpinkel" 
-            id="github"><img class="image-link"
-            src="../static/img/GitHub-Mark-Light-120px-plus.png"
-            alt="Twitter link"></a> 
-        <a  href="https://twitter.com/FencerSpinkel" 
-            id="twitter"><img class="image-link"
-            src="../static/img/Twitter_Social_Icon_Circle_White.png"
-            alt="Twitter link"></a>
-        <a  href="https://www.linkedin.com/in/spencer-finkel" 
-            id="linkedin"><img class="image-link"
-            src="../static/img/LI-In-Bug.png "
-            alt="Twitter link"></a> 
-   </section>
 </body>
 </html>

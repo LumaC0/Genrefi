@@ -100,7 +100,7 @@ CACHES = {
 SESSION_ENGINE = 'redis_sessions.session'
 SESSION_FILE_PATH = '/home/spencer/prod/genrefi/tmp '
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 300
+#SESSION_COOKIE_AGE = 300
 #SESSION_REDIS_UNIX_DOMAIN_SOCKET_PATH = '/var/run/redis/redis.sock'
 
 

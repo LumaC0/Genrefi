@@ -22,16 +22,19 @@ class HomeView(View):
                                                 )
                                             
     def get(self, request):
+        
         if request.GET.get('code'):
             self.auth_manager.get_access_token(request.GET.get('code'))
             self.set_session_variables(request)
             return redirect('/discover')
+        request.session.flush()
         auth_url = self.auth_manager.get_authorize_url()
         return render(request, 'login.html', {'auth_url': auth_url})
         
     def set_session_variables(self, request):
         access_token = self.auth_manager.get_access_token()['access_token']
         token_type = self.auth_manager.get_access_token()['token_type']
+        request.session['refresh_token'] = self.auth_manager.get_access_token()['refresh_token']
         request.session['auth_token'] = token_type + ' ' + access_token
         try:
             os.remove(CACHE_FILE)
@@ -41,13 +44,26 @@ class HomeView(View):
 
 class Discover(View):
     def get(self, request):
-        return render(request, 'index.html')
+        if not request.session.get('library_data'):
+            refresh_token = request.session.get('refresh_token')
+            auth_token = request.session.get('auth_token')
+            request.session['library_data'] = genrefi_logic.genre_fi(auth_token, refresh_token
+            )
+        data = request.session.get('library_data')
+        if data is "timed out":
+            return redirect('/')
+        song_num = data[1]
+        genres = data[0]
+        first_genre = next(iter(genres))
+        first_perc, first_num = genres[first_genre]
+        proc_genres = [(genre.title(), num[0], num[1]) for genre, num in genres.items() if genre != first_genre and num[1] > 2]
+        return render(request, 'index.html', 
+            {'genre1': first_genre,
+            'genre1_song_num': first_num,
+            'genre1_song_percent': first_perc,
+            'genres': proc_genres, 
+            'song_num': song_num})
 
     def post(self, request):
-        if not request.session.get('library_data'):
-            request.session['library_data'] = genrefi_logic.genre_fi(request.session.get('auth_token'))
-        data = request.session.get('library_data')
-        return render(request, 'index.html', {'sorted': data})
-
-        
-
+        request.session.flush()
+        return redirect('/')    

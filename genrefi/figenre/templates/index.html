@@ -2,12 +2,24 @@
 
 {% block button-and-form %}
 <form method="POST" action="/discover">
-<button class="main-butt" id="press-for-magic"><span data-title="Your Library">Discover</span></button>
+<button class="main-butt" id="log-out"><span data-title="Log out">Log out</span></button>
 {% endblock %}
 
-{% block table %}
-    {% for key, value in sorted.items %}
-    <tr><td>{{key}} : {{value}}</td></tr>
-    {% endfor %}
+{% block narrative-2 %}
+<div class="text-info nar2">
+<p id="song-amount">You have <span class="bold">{{song_num}}</span> songs in your Spotify Library.</p>
+<p id="num-1">Your most frequented genre is <span class="bold">{{ genre1 }}</span> with <span class="bold">{{ genre1_song_num }}</span> songs. That's <span class="bold">{{ genre1_song_percent }}%</span> of your library.</p>
+<p><span class="bold" id="no-under">The rest of you looks like this...</span> </p>
+</div>
+{% endblock %}
+{% block data-table %}
+<div class="genre-info">
+    <table class="genre-table">
+        {% for genre, percent, num in genres %}
+        <tr><td class="row"><span class="num-dec">{{ forloop.counter }}.</span> {{ genre }} <span class="perc">{{ percent }}%
+        </span><span class="numbers">{{ num }} s</span> </td></tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}
    

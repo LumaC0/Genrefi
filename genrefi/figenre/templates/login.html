@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% block write-about-stuff %}
-<div class="text-info">
-    <h3 class="starting-text"><p>I've always been curious about my listening habits.</p> 
-        <p>Spotify does an exceptional job at cataloging mostly everything I would want to know.</p>
-        One stastistic </h3>
+{% block narrative-1 %}
+<div class="text-info nar1">
+    <p>Our Spotify libraries are like pockets of emotion; cataloging moments of growth mappable to the volatility of our sonic preference.</p> 
+    <p> As our Libraries amass, they become void of solace. The music we feel today is lost tomorrow. Our history is forgotten.</p>
+    <p>This app was created for the generalist, the specialist, and the equadistant, to give insight into what defines so many of us.</p>
+    <p>By giving us access to your spotify library, we will show you the genre-representation of your collection that is unavailible otherwise.</p>
+    <p>And that's basically it...</p>
 </div>
 {% endblock %}
 {% block button-and-form %}
-<button class="main-butt" id="login"><a class="auth-link" href={{ auth_url }}><span data-title="Spotify">Login</span></a></button>
+<button class="main-butt" id="login"><a class="auth-link" href={{ auth_url }}><span data-title="Spotify">Log in</span></a></button>
 {% endblock %}
 
