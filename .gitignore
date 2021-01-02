@@ -1,10 +1,17 @@
+# random vscode and environemt stuff
 .vscode/*
 Pipfile.lock
+
+# app stuff
+genrefi/figenre/static/bootstrap/**
 genre_scrape/.vscode/*
-.env
 genrefi/geckodriver.log
 dump.rdb
 tmp/
 tmp
-genrefi/figenre/static/bootstrap/**
+
+# environment variables
+.env
+
+# notes for me
 scratch/notes.txt
