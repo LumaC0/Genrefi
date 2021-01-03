@@ -98,7 +98,7 @@ CACHES = {
 }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-SESSION_FILE_PATH = '/home/spencer/prod/genrefi/tmp '
+SESSION_FILE_PATH = Path.joinpath(BASE_DIR,'tmp')
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
