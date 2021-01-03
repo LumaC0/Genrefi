@@ -15,7 +15,9 @@ CACHE_FILE = settings.SESSION_FILE_PATH
 
 class HomeView(View):
     scope = 'user-library-read'
-    auth_manager = spotipy.oauth2.SpotifyOAuth(
+    auth_manager = spotipy.oauth2.SpotifyOAuth( client_id=os.environ.get('SPOTIPY_CLIENT_ID'),
+                                                client_secret=os.environ.get('SPOTIPY_CLIENT_SECRET'),
+                                                redirect_uri=os.environ.get('SPOTIPY_REDIRECT_URI'),
                                                 scope=scope,
                                                 cache_path=CACHE_FILE,
                                                 show_dialog=True,
