@@ -2,7 +2,7 @@
 *.log
 
 # app stuff
-genrefi/geckodriver.log
+geckodriver.log
 dump.rdb
 tmp
 
