@@ -2,7 +2,7 @@
 
 Simple Django webapp that displays Spotify user Library information. Genrefi access' a user's Spotify Library and returns its genre-representation by percentage and number of songs. You can navigate to the webpage here:
 
-### **[www.genrefi.com](https://genrefi.com)**
+### **[www.genrefi.com](https://www.genrefi.com)**
 
 
 ## **Setup**
