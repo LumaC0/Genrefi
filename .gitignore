@@ -1,6 +1,7 @@
 # random vscode and environemt stuff
 .vscode/*
 Pipfile.lock
+geckodriver.log
 
 # app stuff
 genrefi/figenre/static/bootstrap/**
