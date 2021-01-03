@@ -20,7 +20,7 @@ dotenv.read_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-SECRET_KEY = '9^3!@6kxvvlp+so7gp795)g)-7te4ni)z@h-=h9e&fb=8kb96p'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -140,5 +140,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_ROOT = Path.joinpath(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
-
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Deployment settings
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
