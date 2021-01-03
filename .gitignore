@@ -1,13 +1,9 @@
 # random vscode and environemt stuff
-.vscode/*
-Pipfile.lock
+*.log
 
 # app stuff
-genrefi/figenre/static/bootstrap/**
-genre_scrape/.vscode/*
 genrefi/geckodriver.log
 dump.rdb
-tmp/
 tmp
 
 # environment variables
