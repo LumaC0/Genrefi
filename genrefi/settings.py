@@ -27,8 +27,9 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = [
-    'sleepy-citadel-51400.herokuapp.com',
-    '0.0.0.0:5000',
+    'www.genrefi.com',
+    'genrefi.herokuapp.com',
+    '0.0.0.0',
     '127.0.0.1',
 ]
 
