@@ -15,7 +15,7 @@ import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-dotenv.read_dotenv(os.path.abspath(os.path.join(BASE_DIR,'.env')))
+dotenv.read_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -27,8 +27,8 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = [
-    'sleepy-citadel-51400.herokuapp.com/',
-    '0.0.0.0',
+    'sleepy-citadel-51400.herokuapp.com',
+    '0.0.0.0:5000',
     '127.0.0.1',
 ]
 
@@ -140,4 +140,4 @@ USE_TZ = True
 STATIC_ROOT = Path.joinpath(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
