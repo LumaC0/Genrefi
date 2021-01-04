@@ -33,20 +33,25 @@ body {
 }
 
 .header .socials {
-  margin-right: 10%;
   display: flex;
   justify-content: space-evenly;
   width: 30%;
+  height: 30%;
+  margin-top: 3%;
 }
 
 .header .image-link-cont {
   display: flex;
   align-self: center;
+  width: 30%;
+  height: 30%;
 }
 
 .image-link {
-  width: 40px;
+  width: 50%;
+  height: 50%;
   object-fit: cover;
+  align-content: center;
 }
 
 .image-link:hover {
