@@ -52,7 +52,7 @@ $spacer: 1rem;
 // --------------------------------------------------------
 body {
   position: relative;
-  padding: 0 32px;
+  padding: 0 4%;
   background: linear-gradient(to right, map.get($theme-colors, "secondary"), 
     map.get($theme-colors, "spotify"));
   min-height: 100vh;
@@ -117,6 +117,9 @@ button .auth-link {
 
 // -- responsive header
 @media screen and (max-width:600px){
+  body {
+    padding: 0 2%;
+  }
   .header {
     flex-direction: column;
     align-items: center;
@@ -194,16 +197,16 @@ button .auth-link {
   font-family: map.get($fonts, "base-font");
   color: map.get($theme-colors, 'orange');
   font-size: smaller;
-  padding-left: 32px;
+  padding-left: 2%;
 }
 // ----- end button effect ----
 
 #log-out {
   cursor: pointer;
-  padding-bottom: 32px;
+  padding: 2%;
 }
 .text-info {
-  padding: 0px 32px;
+  padding: 0px 2%;
   transition-timing-function: ease-in;
   font-family: map.get($fonts, "base-font");
   color: map.get($theme-colors, 'bej');
@@ -228,7 +231,7 @@ button .auth-link {
 
 // ------------ table -------------------------
 .genre-info {
-  padding: 0px 32px;
+  padding: 0px 2%;
   transition-timing-function: ease-in;
   font-family: map.get($fonts, "base-font");
   color: map.get($theme-colors, 'bej');

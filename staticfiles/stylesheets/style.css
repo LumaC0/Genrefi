@@ -8,7 +8,7 @@
 }
 body {
   position: relative;
-  padding: 0 32px;
+  padding: 0 4%;
   background: linear-gradient(to right, #759eb8, #226f54);
   min-height: 100vh;
   overflow-x: hidden;
@@ -75,6 +75,10 @@ button .auth-link {
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    padding: 0 2%;
+  }
+
   .header {
     flex-direction: column;
     align-items: center;
@@ -150,16 +154,16 @@ button .auth-link {
   font-family: "Raleway";
   color: #ff8630;
   font-size: smaller;
-  padding-left: 32px;
+  padding-left: 2%;
 }
 
 #log-out {
   cursor: pointer;
-  padding-bottom: 32px;
+  padding: 2%;
 }
 
 .text-info {
-  padding: 0px 32px;
+  padding: 0px 2%;
   transition-timing-function: ease-in;
   font-family: "Raleway";
   color: #f4f0bb;
@@ -186,7 +190,7 @@ button .auth-link {
 }
 
 .genre-info {
-  padding: 0px 32px;
+  padding: 0px 2%;
   transition-timing-function: ease-in;
   font-family: "Raleway";
   color: #f4f0bb;
