@@ -18,8 +18,7 @@ AUTHORIZATION_TOKEN = None
 REFESH_TOKEN = None
 
 
-# all about making requests thread-save
-# I do not thing requests are inharently thread-save. idk 
+# saving threads from fiery painful death
 thread_local = threading.local()
 def get_session():
     if not hasattr(thread_local, 'session'):
@@ -33,15 +32,13 @@ class BaseRequests:
 
     def send_data(self, data=None):
         """ 
-        Function for transfering data to other parts of the program.
-        This just makes it easier to see the data
+        uniformed data transfer between classes
         """
         return data
     
     def header(self):
         """
-        request header that will never change.
-        unless it changes...
+        Instance defined API request header
         """
         return {
                 "Accept": "application/json",

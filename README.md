@@ -1,19 +1,18 @@
 # Genrefi
 
-Simple Django webapp that displays Spotify user Library information. Genrefi access' a user's Spotify Library and returns its genre-representation by percentage and number of songs. You can navigate to the webpage here:
-
+A Django web application that returns statistics instead of audio signals. Specifically, the genre composition of a user's library (liked songs only). I wrote the logic because I was curious about the evolution of my music taste. To be honest, I wanted to know how much Drum and Bass I've amassed over the years. If you're curious about how much Drum and Bass, or Tame Impala, or anything else you've collected through this parilous journey called life, then look no further.
 ### **[www.genrefi.com](https://www.genrefi.com)**
 
 
 ## **Setup**
 
-the Genrefi source code is a good place to study django and the spotify API. You can navigate **[here](https://github.com/MushinMiscellanea/genrefi/blob/main/figenre/logic/genrefi_logic.py)** for the logic written to find the percentages of each genre in a user's library.
+the Genrefi source code is a good place to study django and the spotify API. You can navigate **[here](https://github.com/MushinMiscellanea/genrefi/blob/main/figenre/logic/genrefi_logic.py)** for the logic hitting the Spotify API.
 
-**[This](https://spotipy.readthedocs.io/en/2.16.1/)** is the Spotipy documentation. It will run through setting environment variables and navigating to the [Spotify for Developers](https://developer.spotify.com/) page to setup and app in the dashboard
+**[This](https://spotipy.readthedocs.io/en/2.16.1/)** is the Spotipy documentation. It will get you up to speed with environment variables and tasks required on the [Spotify for Developers](https://developer.spotify.com/) page to setup an app in the dashboard
 
 ## Virtual Environment
 
-Setup a virtual env: My preference is Pipenv
+Setup a virtual env: I use Pipenv
 ```
 pip install pipenv
 
@@ -28,13 +27,13 @@ redis
 django-redis-cache
 ```
 
-### For Deployment
+### Deployment
 ```
 gunicorn
 whitenoise
 ```
 
-### For Testing
+### Testing
 ```
 selenium
 ```
