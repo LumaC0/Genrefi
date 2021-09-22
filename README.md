@@ -1,6 +1,11 @@
 # Genrefi
 
-A Django web application that returns statistics instead of audio signals. Specifically, the genre composition of a user's library (liked songs only). I wrote the logic because I was curious about the evolution of my music taste. To be honest, I wanted to know how much Drum and Bass I've amassed over the years. If you're curious about how much Drum and Bass, or Tame Impala, or anything else you've collected through this parilous journey called life, then look no further.
+``` 
+Spotify has either recently updated it's terms and conditions, or I have neglected to notice, but service call limits are now granted explicility. Genrefi does not qualify for a quota extention on grounds of being a "pet project". Uninvited users can no longer sign in. There's only a 25 user limit so you can imagine the party will be dull.
+```
+[Spotify Terms and Conditions](https://developer.spotify.com/terms/#section-vi-access-usage-and-quotas)
+
+A Django web application that returns statistics instead of audio signals. Specifically, the genre composition of a user's library (liked songs only). I wrote the logic because I was curious about the evolution of my music taste. To be honest, I wanted to know how much Drum and Bass I've amassed over the years. If you're curious about how much Drum and Bass, or Tame Impala, or anything else you've collected through this parilous journey, then look no further.
 ### **[www.genrefi.com](https://www.genrefi.com)**
 
 
@@ -12,7 +17,7 @@ the Genrefi source code is a good place to study django and the spotify API. You
 
 ## Virtual Environment
 
-Setup a virtual env: I use Pipenv
+Set up a virtual env: I use Pipenv
 ```
 pip install pipenv
 
@@ -38,7 +43,7 @@ whitenoise
 selenium
 ```
 ## Deployment
-I used [Heroku](https://devcenter.heroku.com/) as a cloud-based PaaS to serve my site. It abstracts much of the headache but still is no walk in the park
+I used [Heroku](https://devcenter.heroku.com/) as a cloud-based PaaS to serve my site. It abstracts much of the headache.
 
 ## Authors
-* **Spencer Finkel** - *Initial work* - [mushinMiscellanea](https://github.com/mushinMiscellanea)
+* **Spencer Finkel** - [Github](https://github.com/LumaC0), [Twitter](https://twitter.com/FencerSpinkel), [Instagram](https://www.instagram.com/fencerspinkel/)

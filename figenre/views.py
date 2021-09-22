@@ -22,9 +22,7 @@ class HomeView(View):
                                                 cache_path=CACHE_FILE,
                                                 show_dialog=True,
                                                 )
-                                            
     def get(self, request):
-        
         if request.GET.get('code'):
             self.auth_manager.get_access_token(request.GET.get('code'))
             self.set_session_variables(request)
@@ -32,7 +30,7 @@ class HomeView(View):
         request.session.flush()
         auth_url = self.auth_manager.get_authorize_url()
         return render(request, 'login.html', {'auth_url': auth_url})
-        
+
     def set_session_variables(self, request):
         access_token = self.auth_manager.get_access_token()['access_token']
         token_type = self.auth_manager.get_access_token()['token_type']
